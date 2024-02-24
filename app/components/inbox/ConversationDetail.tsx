@@ -29,6 +29,7 @@ const ConversationDetail = () => {
           onClick={() => {
             console.log("Clicked..");
           }}
+          className="w-[100px]"
         />
       </div>
     </>
