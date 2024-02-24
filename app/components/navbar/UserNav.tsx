@@ -41,6 +41,7 @@ const UserNav = () => {
         </svg>
       </button>
 
+      {/* User 메뉴 클릭하면 나오는 Popup Menu */}
       {isOpen && (
         <div className="w-[220px] absolute top-[60px] right-0 bg-white border rounded-xl shadow-md flex flex-col cursor-pointer">
           <MenuLink
