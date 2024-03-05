@@ -12,6 +12,7 @@ const PropertyListItem: React.FC<PropertyProps> = ({ property }) => {
         <Image
           fill
           src={property.image_url}
+          // src="https://picsum.photos/250/250"
           alt="Beach house"
           sizes="(max-width: 768px) 768px, (max-width: 1200px): 768px, 768px"
           className="hover:scale-110 object-cover transition h-full w-full"
