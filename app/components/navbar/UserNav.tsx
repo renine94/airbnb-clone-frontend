@@ -3,11 +3,16 @@
 import { useState } from "react";
 
 import MenuLink from "./MenuLink";
+import LogoutButton from "../LogoutButton";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useSignupModal from "@/app/hooks/useSignupModal";
 
-const UserNav = () => {
+interface UserNavProps {
+  userId?: string | null;
+}
+
+const UserNav: React.FC<UserNavProps> = ({ userId }) => {
   const loginModal = useLoginModal();
   const signupModal = useSignupModal();
   const [isOpen, setIsOpen] = useState(false);
@@ -49,24 +54,31 @@ const UserNav = () => {
       {/* User 메뉴 클릭하면 나오는 Popup Menu */}
       {isOpen && (
         <div className="w-[220px] absolute top-[60px] right-0 bg-white border rounded-xl shadow-md flex flex-col cursor-pointer">
-          <MenuLink
-            label="Log in"
-            onClick={() => {
-              console.log("Clicked button");
+          {userId ? (
+            <LogoutButton />
+          ) : (
+            <div>
+              <MenuLink
+                label="Log in"
+                onClick={() => {
+                  console.log("Clicked button");
 
-              setIsOpen(false);
-              loginModal.open();
-            }}
-          />
-          <MenuLink
-            label="Sign up"
-            onClick={() => {
-              console.log("Clicked button");
+                  setIsOpen(false);
+                  loginModal.open();
+                }}
+              />
 
-              setIsOpen(false);
-              signupModal.open();
-            }}
-          />
+              <MenuLink
+                label="Sign up"
+                onClick={() => {
+                  console.log("Clicked button");
+
+                  setIsOpen(false);
+                  signupModal.open();
+                }}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
